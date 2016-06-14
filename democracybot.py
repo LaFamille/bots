@@ -60,7 +60,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         return self.plugin['xep_0045'].getJidProperty(self.room, mucnick, 'jid')
            
     def private_message(self, msg):
-        if msg['mucnick'] != self.nick: 
+        if msg['mucnick'] != self.nick and msg['type'] == 'chat': 
             for activity in self.activities:
                 activity.private_message(msg)
         
