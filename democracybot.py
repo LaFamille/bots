@@ -23,6 +23,7 @@ from datetime import datetime
 
 from ReferendumActivity import ReferendumActivity
 from DiceActivity import DiceActivity
+from AnonyTalkActivity import AnonyTalkActivity
 
 if sys.version_info < (3, 0):
     from sleekxmpp.util.misc_ops import setdefaultencoding
@@ -41,7 +42,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
         self.add_event_handler("groupchat_message", self.muc_message)
         self.add_event_handler("message", self.private_message)
 		
-        self.activities = [ReferendumActivity(self), DiceActivity(self)]
+        self.activities = [ReferendumActivity(self), DiceActivity(self), AnonyTalkActivity(self)]
 
     def start(self, event):
         self.get_roster()
